@@ -347,9 +347,22 @@ export const Dashboard: React.FC = () => {
 
         {/* Sidebar Banner App Download (Clickable to open Qr Modal) */}
         <div className="sidebar-banner">
-          <h4 className="sidebar-banner-title">Download Mobile</h4>
-          <p className="sidebar-banner-desc">Manage resources and scan asset barcodes on the go.</p>
-          <button className="sidebar-banner-btn" onClick={() => setIsQrOpen(true)}>Get App</button>
+          <div className="sidebar-banner-phone">
+            <svg width="26" height="26" fill="none" stroke="#ffffff" strokeWidth="1.5" viewBox="0 0 24 24">
+              <rect x="5" y="2" width="14" height="20" rx="3" ry="3" />
+              <line x1="12" y1="18" x2="12.01" y2="18" />
+            </svg>
+          </div>
+          <h4 className="sidebar-banner-title">Download Mobile App</h4>
+          <p className="sidebar-banner-desc">Manage resources and scan asset barcodes on the go with our mobile app.</p>
+          <button className="sidebar-banner-btn" onClick={() => setIsQrOpen(true)}>
+            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Get App
+          </button>
         </div>
       </aside>
 

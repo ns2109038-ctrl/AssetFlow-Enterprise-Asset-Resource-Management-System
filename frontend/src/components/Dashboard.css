@@ -27,6 +27,22 @@
   position: sticky;
   top: 0;
   box-sizing: border-box;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.1) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.1);
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -128,53 +144,89 @@
 /* Sidebar Banner */
 .sidebar-banner {
   margin-top: auto;
-  background: linear-gradient(135deg, #0d5c3a 0%, #1e8555 100%);
+  background: linear-gradient(135deg, #0d5c3a 0%, #1e8555 50%, #27a96b 100%);
   border-radius: 16px;
-  padding: 20px;
+  padding: 24px 20px 20px 20px;
   color: #ffffff;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 15px -3px rgba(13, 92, 58, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(13, 92, 58, 0.35);
+  flex-shrink: 0;
 }
 
 .sidebar-banner::before {
   content: '';
   position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 80px;
-  height: 80px;
+  top: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.sidebar-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.05);
 }
 
+.sidebar-banner-phone {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  backdrop-filter: blur(4px);
+}
+
 .sidebar-banner-title {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   margin: 0 0 6px 0;
+  position: relative;
+  z-index: 1;
 }
 
 .sidebar-banner-desc {
   font-size: 12px;
-  opacity: 0.8;
+  opacity: 0.85;
   margin: 0 0 16px 0;
-  line-height: 1.4;
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
 }
 
 .sidebar-banner-btn {
   background: #ffffff;
   color: #0d5c3a;
   border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .sidebar-banner-btn:hover {
   background: #e6f4ea;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 
