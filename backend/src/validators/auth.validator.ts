@@ -1,26 +1,12 @@
-import { body } from "express-validator";
+import { z } from "zod";
 
-export const signupValidation = [
-  body("name")
-    .trim()
-    .notEmpty()
-    .withMessage("Name is required"),
+export const signupSchema = z.object({
+  name: z.string().min(3),
+  email: z.string().email(),
+  password: z.string().min(6),
+});
 
-  body("email")
-    .isEmail()
-    .withMessage("Valid email is required"),
-
-  body("password")
-    .isLength({ min: 6 })
-    .withMessage("Password must be at least 6 characters")
-];
-
-export const loginValidation = [
-  body("email")
-    .isEmail()
-    .withMessage("Valid email is required"),
-
-  body("password")
-    .notEmpty()
-    .withMessage("Password is required")
-];
+export const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(6),
+});

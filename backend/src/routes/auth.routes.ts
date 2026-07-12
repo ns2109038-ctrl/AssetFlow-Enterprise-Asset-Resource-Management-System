@@ -2,19 +2,14 @@ import { Router } from "express";
 import {
   signup,
   login,
-  getProfile
+  getProfile,
 } from "../controllers/auth.controller";
-
-import {
-  signupValidation,
-  loginValidation
-} from "../validators/auth.validator";
 
 const router = Router();
 
-router.post("/signup", signupValidation, signup);
+router.post("/signup", signup);
 
-router.post("/login", loginValidation, login);
+router.post("/login", login);
 
 router.get("/me", getProfile);
 

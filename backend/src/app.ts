@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (_, res) => {
+app.get("/", (_req, res) => {
   res.json({
     success: true,
     message: "🚀 AssetFlow API Running"
