@@ -25,34 +25,46 @@ enum AssetStatus {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  name      String
-  email     String   @unique
-  password  String
-  role      UserRole @default(EMPLOYEE)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String      @id @default(cuid())
+  name         String
+  email        String      @unique
+  password     String
+  role         UserRole    @default(EMPLOYEE)
+
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
 }
 
 model Department {
   id        String   @id @default(cuid())
   name      String   @unique
   status    Boolean  @default(true)
+
+  users     User[]
+
   createdAt DateTime @default(now())
 }
-
 model AssetCategory {
   id        String   @id @default(cuid())
   name      String   @unique
   createdAt DateTime @default(now())
+
+  assets    Asset[]
 }
 
 model Asset {
-  id           String      @id @default(cuid())
-  assetTag     String      @unique
-  name         String
-  serialNumber String      @unique
-  location     String
-  status       AssetStatus @default(AVAILABLE)
-  createdAt    DateTime    @default(now())
+  id              String         @id @default(cuid())
+  assetTag        String         @unique
+  name            String
+  serialNumber    String         @unique
+  location        String
+  status          AssetStatus    @default(AVAILABLE)
+
+  categoryId      String
+  category        AssetCategory  @relation(fields: [categoryId], references: [id])
+
+  createdAt       DateTime       @default(now())
 }
