@@ -1,13 +1,21 @@
 import { Router } from "express";
+import {
+  signup,
+  login,
+  getProfile
+} from "../controllers/auth.controller";
+
+import {
+  signupValidation,
+  loginValidation
+} from "../validators/auth.validator";
 
 const router = Router();
 
-// Test Route
-router.get("/", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "Auth API is working 🚀"
-  });
-});
+router.post("/signup", signupValidation, signup);
+
+router.post("/login", loginValidation, login);
+
+router.get("/me", getProfile);
 
 export default router;
