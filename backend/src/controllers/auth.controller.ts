@@ -94,9 +94,9 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
-export const getProfile = async (_req: Request, res: Response) => {
+export const getProfile = async (req: Request, res: Response) => {
   return res.json({
     success: true,
-    message: "Profile endpoint - authentication middleware will be added next.",
+    user: (req as any).user,
   });
 };

@@ -4,6 +4,7 @@ import {
   login,
   getProfile,
 } from "../controllers/auth.controller";
+import { authenticate } from "../middlewares/auth.middleware";
 
 const router = Router();
 
@@ -11,6 +12,6 @@ router.post("/signup", signup);
 
 router.post("/login", login);
 
-router.get("/me", getProfile);
+router.get("/me", authenticate as any, getProfile);
 
 export default router;
