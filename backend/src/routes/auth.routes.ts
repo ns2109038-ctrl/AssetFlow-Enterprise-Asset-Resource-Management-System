@@ -5,12 +5,14 @@ import {
   getProfile,
 } from "../controllers/auth.controller";
 
+import { protect } from "../middlewares/auth.middleware";
+
 const router = Router();
 
 router.post("/signup", signup);
 
 router.post("/login", login);
 
-router.get("/me", getProfile);
+router.get("/me", protect, getProfile);
 
 export default router;

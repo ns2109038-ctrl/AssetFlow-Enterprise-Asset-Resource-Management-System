@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import authRoutes from "./routes/auth.routes";
+import departmentRoutes from "./routes/department.routes";
 
 dotenv.config();
 
@@ -19,5 +20,6 @@ app.get("/", (_req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/departments", departmentRoutes);
 
 export default app;
